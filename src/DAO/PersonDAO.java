@@ -11,7 +11,7 @@ public class PersonDAO {
     private Connection connect = null;
     private PreparedStatement pstm = null;
     private ResultSet res = null;
-    private Person person = new Person();
+
     public void createPerson(Person person){
         String sql = "INSERT INTO person (name, age) VALUES (?,?)";
         try {
