@@ -13,12 +13,13 @@ public class PersonDAO {
     private ResultSet res = null;
 
     public void createPerson(Person person){
-        String sql = "INSERT INTO person (name, age) VALUES (?,?)";
+        String sql = "INSERT INTO person(name, age) VALUES (?,?)";
         try {
             connect = ConnectionDB.createConnection();
             pstm = connect.prepareStatement(sql);
             pstm.setString(1, person.getName());
             pstm.setInt(2, person.getAge());
+            pstm.execute();
         } catch (Exception e){
             e.printStackTrace();
         } finally {
@@ -31,7 +32,7 @@ public class PersonDAO {
         }
     }
 
-    public void readPerson(){
+    public void readPersons(){
         String sql = "SELECT * FROM person";
         try {
             connect = ConnectionDB.createConnection();
@@ -41,7 +42,7 @@ public class PersonDAO {
                 Integer id = res.getInt("id");
                 String name = res.getString("name");
                 Integer age = res.getInt("age");
-                System.out.println("id- "+id+"name- "+name+"age- "+age);
+                System.out.println("id: "+id+" - name: "+name+" - age: "+age);
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -54,14 +55,15 @@ public class PersonDAO {
             }
         }
     }
-    public void updatePerson(Person person){
+    public void updatePerson(Person person, Integer id){
         String sql = "UPDATE person SET name=?, age=? WHERE id=?";
         try {
             connect = ConnectionDB.createConnection();
             pstm = connect.prepareStatement(sql);
             pstm.setString(1, person.getName());
             pstm.setInt(2, person.getAge());
-            pstm.setInt(3, person.getId());
+            pstm.setInt(3, id);
+            pstm.execute();
         } catch (Exception e){
             e.printStackTrace();
         } finally {
@@ -74,12 +76,13 @@ public class PersonDAO {
         }
     }
 
-    public void deletePerson(Person person){
-        String sql = "DELETE person WHERE id=?";
+    public void deletePerson(Integer id){
+        String sql = "DELETE FROM person WHERE id=?";
         try {
             connect = ConnectionDB.createConnection();
             pstm = connect.prepareStatement(sql);
-            pstm.setInt(1, person.getId());
+            pstm.setInt(1, id);
+            pstm.execute();
         } catch (Exception e){
             e.printStackTrace();
         } finally {
