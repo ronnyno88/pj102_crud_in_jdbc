@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class ConnectionDB {
     //variaveis para acesso ao banco de dados
-    private static final String NAME_DATABASE = "";
-    private static final String PATH_DATABASE = "";
+    private static final String NAME_DATABASE = "root";
+    private static final String PATH_DATABASE = "jdbc:mysql://localhost:3306/";
     private static final String PASSWORD= "";
     private static String status = "No connected";
     private static Connection connect = null;
