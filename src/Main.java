@@ -6,7 +6,8 @@ import model.Person;
 public class Main {
     public static void main(String[] args) {
         PersonDAO dao = new PersonDAO();
-        dao.deletePerson(3);
+        Person p1 = new Person("Ronny", 35);
+        dao.createPerson(p1);
         dao.readPersons();
     }
 }

@@ -6,7 +6,7 @@ public class ConnectionDB {
     //variaveis para acesso ao banco de dados
     private static final String NAME_DATABASE = "root";
     private static final String PATH_DATABASE = "jdbc:mysql://localhost:3306/java";
-    private static final String PASSWORD= "";
+    private static final String PASSWORD= "1234";
     private static Connection connect = null;
     public ConnectionDB() {
     }
